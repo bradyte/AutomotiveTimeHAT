@@ -1,6 +1,6 @@
 # AutomotiveTimeHAT
 
-![2025-10-01T20_09_28 539Z-thumbnail_IMG_3502](https://github.com/user-attachments/assets/57f644cd-3265-4f4c-bcdc-205dd5fd6c7b)
+<img width="1020" height="768" alt="PXL_20260421_134043481" src="https://github.com/user-attachments/assets/0bfda747-5b7d-4ddb-8528-48f0428d3eb2" />
 
 Inspired by the [Time Appliances TimeHaAT](https://github.com/Time-Appliances-Project/TimeHAT) I wanted to build my own setup leveraging an existing CM4 I had. Also, I wanted to understand the individual components, the ZED-F9T and the i226 NIC, better so I opted for development boards cobbled together. The TimeHAT is an optimized and clean approach, mine is more academic.
 
@@ -12,7 +12,7 @@ This setup uses a CM4 which is different than the Raspberry Pi 5 but the igc dri
 
 I also added scheduling priority on all the services to ensure these are top priority in the OS for real-time application.
 
-```shell
+```
 CPUSchedulingPolicy=rr
 CPUSchedulingPriority=98
 ```
