@@ -3,7 +3,7 @@
 DEVICES=""
 
 # Other options you want to pass to gpsd
-GPSD_OPTIONS="/dev/ttyAMA0 -s 38400 -n"
+GPSD_OPTIONS="/dev/ttyAMA0 -s 115200 -n"
 
 # Automatically hot add/remove USB GPS devices via gpsdctl
 USBAUTO="true"

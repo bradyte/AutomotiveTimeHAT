@@ -2,7 +2,7 @@
 Description=Synchronize system clock to PTP hardware clock
 
 [Service]
-ExecStart=/usr/sbin/phc2sys -r -s /dev/ptp1 -c CLOCK_REALTIME -w
+ExecStart=/usr/sbin/phc2sys -f /etc/linuxptp/phc2sys.conf -s eth1 -c CLOCK_REALTIME -w
 CPUSchedulingPolicy=rr
 CPUSchedulingPriority=98
 Restart=always

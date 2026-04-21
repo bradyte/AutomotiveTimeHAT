@@ -7,9 +7,14 @@ Inspired by the [Time Appliances TimeHaAT](https://github.com/Time-Appliances-Pr
 Additionally, once ts2phc is successfully synchronized, this implementation takes it a step further to add ptp4l and phc2sys implementation for an 802.1AS synchronized network ultimately for transporting audio, video, and control on a time-sensitive network.
 
 ## Changes from the original TimeHAT repo
-
+### hardware
 This setup uses a CM4 which is different than the Raspberry Pi 5 but the igc driver fix does still appear to work in conjunction with my external i226 NIC.
 
+I sped up the UART rate of the ZED-F9T to 115200 to ensure the NMEA sentences arrive as soon as possible avoiding issues aligning with the PPS edge.
+
+The CM4 board has an RTC so also leveraging using that for faster convergence after power down.
+
+### software
 I also added scheduling priority on all the services to ensure these are top priority in the OS for real-time application.
 
 ```
@@ -19,6 +24,9 @@ CPUSchedulingPriority=98
 
 Aside from that, the original repo does an excellent job explaining how to get setup so I advise starting there in your system.
 
+## Important differences from a standard PTP setup
+
+The most troubleshooting was around the fact that 802.1AS requires a transportSpecific flag to be set. 
 
 ## Installation
 
@@ -27,12 +35,11 @@ The implementation of `phc2sys` is the same but `ptp4l` has two implementations,
 ### configure phc2sys
 ```bash
 #    This systemd service:
-#      * -r instructs phc2sys to also synchronize the system clock 
 #      * -s specifies source clock /dev/ptp1
 #      * -c specifies time sink CLOCK_REALTIME
 #      * -w wait until ptp4l is synchronized
 sudo wget -O /etc/systemd/system/phc2sys.service \
-  https://raw.githubusercontent.com/bradyte/AutomotiveTimeHAT/refs/heads/main/phc2sys/phc2sys.service
+  https://github.com/bradyte/AutomotiveTimeHAT/refs/heads/main/phc2sys/phc2sys.service
 ```
 
 
