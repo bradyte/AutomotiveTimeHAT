@@ -8,9 +8,10 @@ Type=simple
 ExecStart=/usr/bin/socat -d -d \
   pty,rawer,echo=0,link=/dev/gps-ts2phc,mode=660,group=dialout \
   EXEC:"gpspipe -r",pty,rawer
+CPUSchedulingPolicy=rr
+CPUSchedulingPriority=98
 Restart=on-failure
 RestartSec=2
 
 [Install]
 WantedBy=multi-user.target
-

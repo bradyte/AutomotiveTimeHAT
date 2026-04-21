@@ -10,6 +10,8 @@ Type=simple
 ExecStart=/bin/sh -c '\
   /usr/sbin/ts2phc -q -s nmea -c eth1 -f /etc/linuxptp/ts2phc-gps.cfg -m -l 7 \
     2>&1 | grep --line-buffered -Ev "nmea sentence|nmea delay"' 
+CPUSchedulingPolicy=rr
+CPUSchedulingPriority=98
 Restart=on-failure
 RestartSec=2
 
