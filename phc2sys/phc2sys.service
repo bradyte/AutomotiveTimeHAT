@@ -1,10 +1,10 @@
 [Unit]
 Description=Synchronize system clock to PTP hardware clock
-After=ptp4l-gm.service
-Requires=ptp4l-gm.service
+After=ts2phc-gps.service
+Requires=ts2phc-gps.service
 
 [Service]
-ExecStart=/usr/sbin/phc2sys -r -s /dev/ptp1 -c CLOCK_REALTIME
+ExecStart=/usr/sbin/phc2sys -r -s /dev/ptp1 -c CLOCK_REALTIME -w
 CPUSchedulingPolicy=rr
 CPUSchedulingPriority=98
 Restart=always
