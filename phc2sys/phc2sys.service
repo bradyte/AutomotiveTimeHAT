@@ -1,7 +1,5 @@
 [Unit]
 Description=Synchronize system clock to PTP hardware clock
-After=ts2phc-gps.service
-Requires=ts2phc-gps.service
 
 [Service]
 ExecStart=/usr/sbin/phc2sys -r -s /dev/ptp1 -c CLOCK_REALTIME -w

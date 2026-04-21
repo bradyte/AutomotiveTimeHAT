@@ -20,6 +20,21 @@ CPUSchedulingPriority=98
 Aside from that, the original repo does an excellent job explaining how to get setup so I advise starting there in your system.
 
 
+## Installation
+
+The implementation of `phc2sys` is the same but `ptp4l` has two implementations, one for the grandmaster AutomotiveTimeHAT and one for the client devices connected.
+
+### configure phc2sys
+```bash
+#    This systemd service:
+#      * -r instructs phc2sys to also synchronize the system clock 
+#      * -s specifies source clock /dev/ptp1
+#      * -c specifies time sink CLOCK_REALTIME
+#      * -w wait until ptp4l is synchronized
+sudo wget -O /etc/systemd/system/phc2sys.service \
+  https://raw.githubusercontent.com/bradyte/AutomotiveTimeHAT/refs/heads/main/phc2sys/phc2sys.service
+```
+
 
 ## License
 
