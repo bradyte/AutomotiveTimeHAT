@@ -1,0 +1,14 @@
+[Unit]
+Description=ptp4l Client Service
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/sbin/ptp4l -i eth1 -f /etc/linuxptp/ptp4l-auto-client.conf
+CPUSchedulingPolicy=fifo
+CPUSchedulingPriority=98
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

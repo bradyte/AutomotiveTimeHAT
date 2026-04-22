@@ -3,9 +3,8 @@ Description=Precision Time Protocol (PTP) service
 After=ts2phc-gps.service
 Requires=ts2phc-gps.service
 
-
 [Service]
-ExecStart=/usr/sbin/ptp4l -i eth1 -f /etc/linuxptp/ptp4l-gm.conf
+ExecStart=/usr/sbin/ptp4l -i eth1 -f /etc/linuxptp/ptp4l-auto-gm.conf
 ExecStartPost=/usr/bin/bash -c "sleep 2; /usr/sbin/pmc -u -b 0 -t 1 \
     'SET GRANDMASTER_SETTINGS_NP \
     clockClass 6 \
