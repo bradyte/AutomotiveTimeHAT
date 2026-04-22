@@ -25,10 +25,10 @@ sudo wget -O /etc/linuxptp/phc2sys.conf \
 #      *    at the bottom of the linuxptp automotive-master.cfg
 #      * pmc then uses a non-portable command to manually set the 
 #      *    currentUtcOffsetValid to 1 for phc2sys to trust this clock
-sudo wget -O /etc/systemd/system/ptp4l-gm.service \
+sudo wget -O /etc/systemd/system/ptp4l-auto-gm.service \
   https://raw.githubusercontent.com/bradyte/AutomotiveTimeHAT/refs/heads/main/src/ptp4l/ptp4l-auto-gm.service
 
-sudo wget -O /etc/linuxptp/ptp4l-gm.conf \
+sudo wget -O /etc/linuxptp/ptp4l-auto-gm.conf \
   https://raw.githubusercontent.com/bradyte/AutomotiveTimeHAT/refs/heads/main/src/ptp4l/ptp4l-auto-gm.conf
 ```
 
@@ -64,11 +64,11 @@ sudo wget -O /etc/linuxptp/phc2sys.conf \
 #      * -i specifies ptp port
 #      * the .conf file declares the static configuration of the client to look
 #      *    at the port and sync immediately
-sudo wget -O /etc/systemd/system/ptp4l-gm.service \
+sudo wget -O /etc/systemd/system/ptp4l-auto-client.service \
   https://raw.githubusercontent.com/bradyte/AutomotiveTimeHAT/refs/heads/main/src/ptp4l/ptp4l-auto-client.service
 
-sudo wget -O /etc/linuxptp/ptp4l-gm.conf \
-  https://raw.githubusercontent.com/bradyte/AutomotiveTimeHAT/refs/heads/main/src/ptp4l/ptp4l-auto-gm.conf
+sudo wget -O /etc/linuxptp/ptp4l-auto-client.conf \
+  https://raw.githubusercontent.com/bradyte/AutomotiveTimeHAT/refs/heads/main/src/ptp4l/ptp4l-auto-client.conf
 ```
 
 ### enable the daemons
