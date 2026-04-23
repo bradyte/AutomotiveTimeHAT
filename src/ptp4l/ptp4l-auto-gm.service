@@ -4,24 +4,18 @@ After=ts2phc-gps.service
 Requires=ts2phc-gps.service
 
 [Service]
-ExecStart=/usr/sbin/ptp4l -i eth1 -f /etc/linuxptp/ptp4l-auto-gm.conf
-ExecStartPost=/usr/bin/bash -c "sleep 2; /usr/sbin/pmc -u -b 0 -t 1 \
-    'SET GRANDMASTER_SETTINGS_NP \
-    clockClass 6 \
-    clockAccuracy 0x21 \
-    offsetScaledLogVariance 0x4e5d \
-    currentUtcOffset 37 \
-    leap61 0 \
-    leap59 0 \
-    currentUtcOffsetValid 1 \
-    ptpTimescale 1 \
-    timeTraceable 1 \
-    frequencyTraceable 1 \
-    timeSource 0x20'"
-CPUSchedulingPolicy=rr
-CPUSchedulingPriority=98
+ExecStart=/usr/sbin/ptp4l -f /etc/linuxptp/ptp4l-auto-gm.conf -i eth1
 Restart=always
 RestartSec=5
+
+ExecStartPost=/usr/bin/sleep 2
+ExecStartPost=/usr/sbin/pmc -u -b 0 -t 1 \
+    "SET GRANDMASTER_SETTINGS_NP \
+    clockClass 6 clockAccuracy 0x21 offsetScaledLogVariance 0x4e5d \
+    currentUtcOffset 37 leap61 0 leap59 0 currentUtcOffsetValid 1 \
+    ptpTimescale 1 timeTraceable 1 frequencyTraceable 1 timeSource 0x20"
+CPUSchedulingPolicy=rr
+CPUSchedulingPriority=98
 
 [Install]
 WantedBy=multi-user.target

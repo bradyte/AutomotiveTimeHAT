@@ -4,7 +4,7 @@ After=network.target
 
 [Service]
 Type=simple
-ExecStart=/usr/local/sbin/ptp4l -i eth1 -f /etc/linuxptp/ptp4l-auto-client.conf
+ExecStart=/usr/local/sbin/ptp4l -f /etc/linuxptp/ptp4l-auto-client.conf -i eth1 
 CPUSchedulingPolicy=fifo
 CPUSchedulingPriority=98
 Restart=always
