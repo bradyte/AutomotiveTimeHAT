@@ -153,10 +153,13 @@ gcc -Wall -lrt testptp.c -o testptp
 # move to binary directory
 sudo mv testptp /usr/local/bin/
 ```
-Then configure the output, I'm using SDP0 in this case since it's available on both
+Then configure the output, I'm using SDP0 in this case since it's available on both.
+```bash
+sudo testptp -d /dev/ptp1 -L 0,2
+sudo testptp -d /dev/ptp1 -p 1000000000
+```
 
-Additionally, you can use the very convenient check_clocks program to confirm synchronization in the system
-
+Additionally, you can use the very convenient check_clocks program to confirm synchronization in the system. However, I did notice some issues when it interacts with the Automotive profile for now.
 ```bash
 # download check_clocks
 wget https://tsn.readthedocs.io/_downloads/5d05630fceb3e7ac1582bc94c7468fc3/check_clocks.c
@@ -189,4 +192,11 @@ sudo systemctl stop ntp
 
 # Disable NTP if it is running
 sudo timedatectl set-ntp false
+```
+
+Check pmc settings
+```bash
+sudo pmc -u -b 0 -t 1 "GET GRANDMASTER_SETTINGS_NP"
+
+sudo phc_ctl eth1 cmp
 ```
