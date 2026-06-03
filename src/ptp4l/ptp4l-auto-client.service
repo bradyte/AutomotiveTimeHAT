@@ -6,7 +6,8 @@ After=network.target
 Type=simple
 ExecStart=/usr/sbin/ptp4l -f /etc/linuxptp/ptp4l-auto-client.conf -i eth1 
 CPUSchedulingPolicy=fifo
-CPUSchedulingPriority=98
+CPUSchedulingPriority=95
+CPUAffinity=1
 Restart=always
 RestartSec=5
 

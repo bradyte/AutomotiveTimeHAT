@@ -3,8 +3,9 @@ Description=Synchronize system clock to PTP hardware clock
 
 [Service]
 ExecStart=/usr/sbin/phc2sys -f /etc/linuxptp/phc2sys.conf -s eth1 -c CLOCK_REALTIME -w
-CPUSchedulingPolicy=rr
-CPUSchedulingPriority=98
+CPUSchedulingPolicy=fifo
+CPUSchedulingPriority=90
+CPUAffinity=1
 Restart=always
 RestartSec=5
 
