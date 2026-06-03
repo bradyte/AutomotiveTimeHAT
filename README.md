@@ -18,8 +18,9 @@ The CM4 board has an RTC so also leveraging using that for faster time convergen
 I also added scheduling priority on all the services to ensure these are top priority in the OS for real-time applications.
 
 ```
-CPUSchedulingPolicy=rr
+CPUSchedulingPolicy=fifo
 CPUSchedulingPriority=98
+CPUAffinity=1
 ```
 
 Aside from that, the original [Time Appliances TimeHAT](https://github.com/Time-Appliances-Project/TimeHAT) repo does an excellent job explaining how to get setup so I advise starting there in your system.
