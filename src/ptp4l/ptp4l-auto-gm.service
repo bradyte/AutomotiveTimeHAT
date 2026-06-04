@@ -4,6 +4,7 @@ After=ts2phc-gps.service
 Requires=ts2phc-gps.service
 
 [Service]
+Type=exec
 ExecStart=/usr/sbin/ptp4l -f /etc/linuxptp/ptp4l-auto-gm.conf -i eth1
 Restart=always
 RestartSec=5
@@ -15,8 +16,10 @@ ExecStartPost=/usr/sbin/pmc -u -b 0 -t 1 \
     currentUtcOffset 37 leap61 0 leap59 0 currentUtcOffsetValid 1 \
     ptpTimescale 1 timeTraceable 1 frequencyTraceable 1 timeSource 0x20"
 CPUSchedulingPolicy=fifo
-CPUSchedulingPriority=95
+CPUSchedulingPriority=97
 CPUAffinity=1
+IOSchedulingClass=realtime
+IOSchedulingPriority=1
 
 [Install]
 WantedBy=multi-user.target

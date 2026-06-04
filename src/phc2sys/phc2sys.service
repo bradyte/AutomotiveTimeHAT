@@ -1,11 +1,15 @@
 [Unit]
 Description=Synchronize system clock to PTP hardware clock
+After=network.target
 
 [Service]
+Type=exec
 ExecStart=/usr/sbin/phc2sys -f /etc/linuxptp/phc2sys.conf -s eth1 -c CLOCK_REALTIME -w
 CPUSchedulingPolicy=fifo
-CPUSchedulingPriority=90
+CPUSchedulingPriority=96
 CPUAffinity=1
+IOSchedulingClass=realtime
+IOSchedulingPriority=2
 Restart=always
 RestartSec=5
 
