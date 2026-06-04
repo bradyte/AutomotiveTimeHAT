@@ -65,7 +65,7 @@ sudo wget -O /etc/linuxptp/ptp4l-auto-client.conf \
 #      * -c specifies time sink CLOCK_REALTIME
 #      * -w wait until ptp4l is synchronized
 #      * set transportSpecific to 1 and set_threshold  
-#           so that ptp4l converges faster when “time jumps” occur
+#           so that ptp4l converges faster when time jumps occur
 sudo wget -O /etc/systemd/system/phc2sys.service \
   https://raw.githubusercontent.com/bradyte/AutomotiveTimeHAT/refs/heads/main/src/phc2sys/phc2sys.service
 
