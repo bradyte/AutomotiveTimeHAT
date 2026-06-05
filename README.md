@@ -19,8 +19,8 @@ I also added scheduling priority on all the services to ensure these are top pri
 
 ```
 CPUSchedulingPolicy=fifo
-CPUSchedulingPriority=98
-CPUAffinity=1
+CPUSchedulingPriority=85
+CPUAffinity=2
 ```
 
 Aside from that, the original [Time Appliances TimeHAT](https://github.com/Time-Appliances-Project/TimeHAT) repo does an excellent job explaining how to get setup so I advise starting there in your system.
