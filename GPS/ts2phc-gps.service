@@ -4,18 +4,17 @@ After=gpspipe-socat.service
 Requires=gpspipe-socat.service
 
 [Service]
-Type=exec
+Type=simple
+# for full logging, enable this instead, but its a lot of logs
+#ExecStart=/usr/sbin/ts2phc -s nmea -c eth1 -f /etc/linuxptp/ts2phc-gps.cfg -m -l 7
 ExecStart=/bin/sh -c '\
   /usr/sbin/ts2phc -q -s nmea -c eth1 -f /etc/linuxptp/ts2phc-gps.cfg -m -l 7 \
     2>&1 | grep --line-buffered -Ev "nmea sentence|nmea delay"' 
-CPUSchedulingPolicy=fifo
-CPUSchedulingPriority=98
-CPUAffinity=1
-IOSchedulingClass=realtime
-IOSchedulingPriority=0
 Restart=on-failure
 RestartSec=2
+CPUSchedulingPolicy=fifo
+CPUSchedulingPriority=85
+CPUAffinity=2
 
 [Install]
 WantedBy=multi-user.target
-

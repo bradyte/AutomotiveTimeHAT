@@ -5,13 +5,11 @@ After=network.target
 [Service]
 Type=exec
 ExecStart=/usr/sbin/phc2sys -f /etc/linuxptp/phc2sys.conf -s eth1 -c CLOCK_REALTIME -w
+Restart=on-failure
+RestartSec=2
 CPUSchedulingPolicy=fifo
-CPUSchedulingPriority=96
-CPUAffinity=1
-IOSchedulingClass=realtime
-IOSchedulingPriority=2
-Restart=always
-RestartSec=5
+CPUSchedulingPriority=83
+CPUAffinity=2
 
 [Install]
 WantedBy=multi-user.target
