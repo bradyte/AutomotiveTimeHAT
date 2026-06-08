@@ -5,13 +5,11 @@ After=network.target
 [Service]
 Type=exec
 ExecStart=/usr/sbin/ptp4l -f /etc/linuxptp/ptp4l-auto-client.conf -i eth1 
+Restart=on-failure
+RestartSec=2
 CPUSchedulingPolicy=fifo
-CPUSchedulingPriority=97
+CPUSchedulingPriority=84
 CPUAffinity=2
-IOSchedulingClass=realtime
-IOSchedulingPriority=0
-Restart=always
-RestartSec=5
 
 [Install]
 WantedBy=multi-user.target
