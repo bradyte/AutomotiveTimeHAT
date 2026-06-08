@@ -25,7 +25,7 @@ sudo wget -O /etc/linuxptp/ptp4l-auto-gm.conf \
 #      * -c specifies time sink CLOCK_REALTIME
 #      * -w wait until ptp4l is synchronized
 #      * set transportSpecific to 1 and set_threshold  
-#           so that ptp4l converges faster when “time jumps” occur
+#           so that ptp4l converges faster when "time jumps" occur
 sudo wget -O /etc/systemd/system/phc2sys.service \
   https://raw.githubusercontent.com/bradyte/AutomotiveTimeHAT/refs/heads/main/src/phc2sys/phc2sys.service
 
@@ -86,48 +86,52 @@ sudo systemctl start phc2sys.service
 
 ### ts2phc
 ```bash
-Apr 21 23:02:58 raspberrypi sh[794]: ts2phc[24323.920]: adding tstamp 1776827015.000000001 to clock /dev/ptp1
-Apr 21 23:02:58 raspberrypi sh[794]: ts2phc[24323.920]: /dev/ptp1 offset          1 s2 freq  +13299
-Apr 21 23:02:59 raspberrypi sh[794]: ts2phc[24324.920]: adding tstamp 1776827015.999999994 to clock /dev/ptp1
-Apr 21 23:02:59 raspberrypi sh[794]: ts2phc[24324.920]: /dev/ptp1 offset         -6 s2 freq  +13293
-Apr 21 23:03:00 raspberrypi sh[794]: ts2phc[24325.920]: adding tstamp 1776827017.000000001 to clock /dev/ptp1
-Apr 21 23:03:00 raspberrypi sh[794]: ts2phc[24325.920]: /dev/ptp1 offset          1 s2 freq  +13298
-Apr 21 23:03:01 raspberrypi sh[794]: ts2phc[24326.920]: adding tstamp 1776827018.000000002 to clock /dev/ptp1
-Apr 21 23:03:01 raspberrypi sh[794]: ts2phc[24326.920]: /dev/ptp1 offset          2 s2 freq  +13299
-Apr 21 23:03:02 raspberrypi sh[794]: ts2phc[24327.920]: adding tstamp 1776827018.999999996 to clock /dev/ptp1
-Apr 21 23:03:02 raspberrypi sh[794]: ts2phc[24327.920]: /dev/ptp1 offset         -4 s2 freq  +13294
+un 08 02:13:43 ubuntu sh[824]: ts2phc[3759.348]: adding tstamp 1780884860.000000001 to clock /dev/ptp1
+Jun 08 02:13:43 ubuntu sh[824]: ts2phc[3759.348]: /dev/ptp1 offset          1 s2 freq  +12347
+Jun 08 02:13:44 ubuntu sh[824]: ts2phc[3760.348]: adding tstamp 1780884861.000000000 to clock /dev/ptp1
+Jun 08 02:13:44 ubuntu sh[824]: ts2phc[3760.348]: /dev/ptp1 offset          0 s2 freq  +12346
+Jun 08 02:13:45 ubuntu sh[824]: ts2phc[3761.348]: adding tstamp 1780884862.000000006 to clock /dev/ptp1
+Jun 08 02:13:45 ubuntu sh[824]: ts2phc[3761.348]: /dev/ptp1 offset          6 s2 freq  +12352
+Jun 08 02:13:46 ubuntu sh[824]: ts2phc[3762.348]: adding tstamp 1780884863.000000000 to clock /dev/ptp1
+Jun 08 02:13:46 ubuntu sh[824]: ts2phc[3762.348]: /dev/ptp1 offset          0 s2 freq  +12348
+Jun 08 02:13:47 ubuntu sh[824]: ts2phc[3763.348]: adding tstamp 1780884863.999999998 to clock /dev/ptp1
+Jun 08 02:13:47 ubuntu sh[824]: ts2phc[3763.348]: /dev/ptp1 offset         -2 s2 freq  +12346
+Jun 08 02:13:48 ubuntu sh[824]: ts2phc[3764.348]: adding tstamp 1780884865.000000004 to clock /dev/ptp1
+Jun 08 02:13:48 ubuntu sh[824]: ts2phc[3764.348]: /dev/ptp1 offset          4 s2 freq  +12351
 ```
 
 ### ptp4l-auto-gm
 ```bash
-Apr 21 23:05:22 raspberrypi ptp4l[10528]: [24468.895] selected /dev/ptp1 as PTP clock
-Apr 21 23:05:23 raspberrypi ptp4l[10528]: [24468.944] port 1 (eth1): INITIALIZING to MASTER on INIT_COMPLETE
-Apr 21 23:05:23 raspberrypi ptp4l[10528]: [24468.944] port 0 (/var/run/ptp4l): INITIALIZING to LISTENING on INIT_COMPLETE
-Apr 21 23:05:23 raspberrypi ptp4l[10528]: [24468.944] port 0 (/var/run/ptp4lro): INITIALIZING to LISTENING on INIT_COMPLETE
-Apr 21 23:05:24 raspberrypi ptp4l[10528]: [24470.900] selected local clock f0b2b9.fffe.31a9a8 as best master
-Apr 21 23:05:24 raspberrypi bash[10529]: sending: SET GRANDMASTER_SETTINGS_NP
-Apr 21 23:05:24 raspberrypi bash[10529]:         f0b2b9.fffe.31a9a8-0 seq 0 RESPONSE MANAGEMENT GRANDMASTER_SETTINGS_NP
-Apr 21 23:05:24 raspberrypi bash[10529]:                 clockClass              6
-Apr 21 23:05:24 raspberrypi bash[10529]:                 clockAccuracy           0x21
-Apr 21 23:05:24 raspberrypi bash[10529]:                 offsetScaledLogVariance 0x4e5d
-Apr 21 23:05:24 raspberrypi bash[10529]:                 currentUtcOffset        37
-Apr 21 23:05:24 raspberrypi bash[10529]:                 leap61                  0
-Apr 21 23:05:24 raspberrypi bash[10529]:                 leap59                  0
-Apr 21 23:05:24 raspberrypi bash[10529]:                 currentUtcOffsetValid   1
-Apr 21 23:05:24 raspberrypi bash[10529]:                 ptpTimescale            1
-Apr 21 23:05:24 raspberrypi bash[10529]:                 timeTraceable           1
-Apr 21 23:05:24 raspberrypi bash[10529]:                 frequencyTraceable      1
-Apr 21 23:05:24 raspberrypi bash[10529]:                 timeSource              0x20
-Apr 21 23:05:25 raspberrypi systemd[1]: Started ptp4l-gm.service - Precision Time Protocol (PTP) service.
+Jun 08 01:46:27 ubuntu systemd[1]: Starting ptp4l-auto-gm.service - Precision Time Protocol (PTP) service...
+Jun 08 01:46:27 ubuntu ptp4l[1739]: [2123.452] selected /dev/ptp1 as PTP clock
+Jun 08 01:46:27 ubuntu ptp4l[1739]: [2123.474] port 1 (eth1): INITIALIZING to MASTER on INIT_COMPLETE
+Jun 08 01:46:27 ubuntu ptp4l[1739]: [2123.475] port 0 (/var/run/ptp4l): INITIALIZING to LISTENING on INIT_COMPLETE
+Jun 08 01:46:27 ubuntu ptp4l[1739]: [2123.475] port 0 (/var/run/ptp4lro): INITIALIZING to LISTENING on INIT_COMPLETE
+Jun 08 01:46:29 ubuntu ptp4l[1739]: [2125.560] selected local clock f0b2b9.fffe.31a9a8 as best master
+Jun 08 01:46:29 ubuntu pmc[1755]: sending: SET GRANDMASTER_SETTINGS_NP
+Jun 08 01:46:29 ubuntu pmc[1755]:         f0b2b9.fffe.31a9a8-0 seq 0 RESPONSE MANAGEMENT GRANDMASTER_SETTINGS_NP
+Jun 08 01:46:29 ubuntu pmc[1755]:                 clockClass              6
+Jun 08 01:46:29 ubuntu pmc[1755]:                 clockAccuracy           0x21
+Jun 08 01:46:29 ubuntu pmc[1755]:                 offsetScaledLogVariance 0x4e5d
+Jun 08 01:46:29 ubuntu pmc[1755]:                 currentUtcOffset        37
+Jun 08 01:46:29 ubuntu pmc[1755]:                 leap61                  0
+Jun 08 01:46:29 ubuntu pmc[1755]:                 leap59                  0
+Jun 08 01:46:29 ubuntu pmc[1755]:                 currentUtcOffsetValid   1
+Jun 08 01:46:29 ubuntu pmc[1755]:                 ptpTimescale            1
+Jun 08 01:46:29 ubuntu pmc[1755]:                 timeTraceable           1
+Jun 08 01:46:29 ubuntu pmc[1755]:                 frequencyTraceable      1
+Jun 08 01:46:29 ubuntu pmc[1755]:                 timeSource              0x20
+Jun 08 01:46:29 ubuntu systemd[1]: Started ptp4l-auto-gm.service - Precision Time Protocol (PTP) service.
 ```
 
 ### phc2sys
 ```bash
-Apr 21 23:07:15 raspberrypi phc2sys[716]: [24581.066] CLOCK_REALTIME phc offset       -23 s2 freq  +22740 delay   2222
-Apr 21 23:07:16 raspberrypi phc2sys[716]: [24582.066] CLOCK_REALTIME phc offset        15 s2 freq  +22771 delay   2148
-Apr 21 23:07:17 raspberrypi phc2sys[716]: [24583.066] CLOCK_REALTIME phc offset        40 s2 freq  +22800 delay   2204
-Apr 21 23:07:18 raspberrypi phc2sys[716]: [24584.067] CLOCK_REALTIME phc offset        25 s2 freq  +22797 delay   2203
-Apr 21 23:07:19 raspberrypi phc2sys[716]: [24585.067] CLOCK_REALTIME phc offset       -35 s2 freq  +22745 delay   2222
+Jun 08 02:15:08 ubuntu phc2sys[5127]: [3845.277] CLOCK_REALTIME phc offset        -1 s2 freq  +22104 delay   2093
+Jun 08 02:15:09 ubuntu phc2sys[5127]: [3846.277] CLOCK_REALTIME phc offset       -13 s2 freq  +22091 delay   2093
+Jun 08 02:15:10 ubuntu phc2sys[5127]: [3847.278] CLOCK_REALTIME phc offset        -5 s2 freq  +22095 delay   2074
+Jun 08 02:15:11 ubuntu phc2sys[5127]: [3848.278] CLOCK_REALTIME phc offset        -1 s2 freq  +22098 delay   2074
+Jun 08 02:15:12 ubuntu phc2sys[5127]: [3849.278] CLOCK_REALTIME phc offset        10 s2 freq  +22109 delay   2092
+Jun 08 02:15:13 ubuntu phc2sys[5127]: [3850.279] CLOCK_REALTIME phc offset         9 s2 freq  +22111 delay   2092
 ```
 
 ### ptp4l-auto-client
