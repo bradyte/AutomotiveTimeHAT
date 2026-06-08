@@ -137,11 +137,11 @@ Jun 08 02:15:13 ubuntu phc2sys[5127]: [3850.279] CLOCK_REALTIME phc offset      
 ### ptp4l-auto-client
 From the client device, I am seeing sub 15ns latency
 ```bash
-Apr 21 16:32:34 raspberrypi ptp4l[918]: ptp4l[1415.461]: master offset         -5 s3 freq  -12640 path delay       -10
-Apr 21 16:32:35 raspberrypi ptp4l[918]: ptp4l[1416.462]: master offset          1 s3 freq  -12636 path delay       -10
-Apr 21 16:32:36 raspberrypi ptp4l[918]: ptp4l[1417.462]: master offset         -1 s3 freq  -12637 path delay       -10
-Apr 21 16:32:37 raspberrypi ptp4l[918]: ptp4l[1418.462]: master offset         -1 s3 freq  -12638 path delay       -10
-Apr 21 16:32:38 raspberrypi ptp4l[918]: ptp4l[1419.462]: master offset          2 s3 freq  -12635 path delay       -10
+Jun 07 22:28:18 raspberrypi ptp4l[986]: [310081.094] rms    5 max    8 freq +15757 +/-   4 delay    43 +/-   0
+Jun 07 22:28:19 raspberrypi ptp4l[986]: [310082.095] rms    4 max    8 freq +15754 +/-   6 delay    44 +/-   0
+Jun 07 22:28:20 raspberrypi ptp4l[986]: [310083.097] rms    5 max   11 freq +15751 +/-   6 delay    43 +/-   0
+Jun 07 22:28:21 raspberrypi ptp4l[986]: [310084.099] rms    5 max    9 freq +15750 +/-   6 delay    44 +/-   0
+Jun 07 22:28:22 raspberrypi ptp4l[986]: [310085.100] rms    6 max    8 freq +15750 +/-   8 delay    44 +/-   0
 ```
 
 ## confirming sync
