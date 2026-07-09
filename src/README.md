@@ -3,6 +3,14 @@
 The implementation of `phc2sys` is the same but `ptp4l` has two implementations, one for the grandmaster AutomotiveTimeHAT and one for the client devices connected.
 ## grandmaster
 
+### configure igc-ptp-irq
+```bash
+#    This systemd service allows "other" eth1 events to be prioritized over
+#     other TxR IRQs. Needed for handling the multiple SDP EXTTS events
+sudo wget -O /etc/systemd/system/ptp4l-auto-gm.service \
+  https://raw.githubusercontent.com/bradyte/AutomotiveTimeHAT/refs/heads/main/src/igc/igc-ptp-irq.service
+```
+
 ### configure ptp4l-auto-gm
 ```bash
 #    This systemd service is the workhorse pulling it all together:
@@ -37,6 +45,8 @@ sudo wget -O /etc/linuxptp/phc2sys.conf \
 
 ```bash
 sudo systemctl daemon-reload
+sudo systemctl enable igc-ptp-irq.service
+sudo systemctl start igc-ptp-irq.service
 sudo systemctl enable ptp4l-auto-gm.service
 sudo systemctl start ptp4l-auto-gm.service
 sudo systemctl enable phc2sys.service

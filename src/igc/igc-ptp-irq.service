@@ -1,0 +1,12 @@
+[Unit]
+Description=Elevate igc PTP IRQ priority above TxRx threads
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/bin/sh -c 'PID=$(pgrep -f "irq/.*-eth1$$"); chrt -f -p 90 $$PID'
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

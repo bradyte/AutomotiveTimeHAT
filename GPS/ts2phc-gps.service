@@ -1,7 +1,7 @@
 [Unit]
 Description=ts2phc disciplining eth1 from GPS NMEA+PPS
-After=gpspipe-socat.service
-Requires=gpspipe-socat.service
+After=gpspipe-socat.service igc-ptp-irq.service
+Requires=gpspipe-socat.service igc-ptp-irq.service
 
 [Service]
 Type=simple
