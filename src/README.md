@@ -59,6 +59,10 @@ sudo systemctl enable ptp4l-auto-gm.service
 sudo systemctl start ptp4l-auto-gm.service
 sudo systemctl enable phc2sys.service
 sudo systemctl start phc2sys.service
+
+# optional
+sudo systemctl enable rt-perf-tuning.service
+sudo systemctl start rt-perf-tuning.service
 ```
 
 ## client
