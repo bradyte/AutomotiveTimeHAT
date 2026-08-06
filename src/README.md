@@ -11,6 +11,14 @@ sudo wget -O /etc/systemd/system/ptp4l-auto-gm.service \
   https://raw.githubusercontent.com/bradyte/AutomotiveTimeHAT/refs/heads/main/src/igc/igc-ptp-irq.service
 ```
 
+### [optional] configure rt-perf-tuning
+```bash
+#    This systemd service sets all CPU cores to the "performance" and allows 
+#     real-time tasks to use 100% of CPU time without being preempted
+sudo wget -O /etc/systemd/system/rt-perf-tuning.service \
+  https://raw.githubusercontent.com/bradyte/AutomotiveTimeHAT/refs/heads/main/src/perf/rt-perf-tuning.service
+```
+
 ### configure ptp4l-auto-gm
 ```bash
 #    This systemd service is the workhorse pulling it all together:
