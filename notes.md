@@ -1,3 +1,8 @@
+<!--
+SPDX-License-Identifier: CC-BY-NC-4.0
+Copyright © 2026 by Analog Devices, Inc.
+-->
+
 ##### hwclock
 not included by default
 ```

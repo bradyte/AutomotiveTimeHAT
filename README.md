@@ -1,3 +1,8 @@
+<!--
+SPDX-License-Identifier: CC-BY-NC-4.0
+Portions Copyright (C) 2026 by Analog Devices
+-->
+
 # AutomotiveTimeHAT
 
 <img width="1020" height="768" alt="PXL_20260421_134043481" src="https://github.com/user-attachments/assets/0bfda747-5b7d-4ddb-8528-48f0428d3eb2" />

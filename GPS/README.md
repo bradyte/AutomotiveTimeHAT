@@ -1,3 +1,8 @@
+<!--
+SPDX-License-Identifier: CC-BY-NC-4.0
+Portions Copyright (C) 2026 by Analog Devices
+-->
+
 # GNSS Time Stack (u-blox + gpsd + ts2phc)
 
 This setup lets:
