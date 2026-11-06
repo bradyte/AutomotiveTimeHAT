@@ -7,7 +7,7 @@ After=network.target
 
 [Service]
 Type=exec
-ExecStart=/usr/sbin/phc2sys -f /etc/linuxptp/phc2sys.conf -s eth1 -c CLOCK_REALTIME -w
+ExecStart=/usr/sbin/phc2sys -f /etc/linuxptp/phc2sys.conf -s eth0 -c CLOCK_REALTIME -w
 Restart=on-failure
 RestartSec=2
 CPUSchedulingPolicy=fifo
