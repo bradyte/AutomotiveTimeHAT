@@ -7,7 +7,7 @@ The implementation of `phc2sys` is the same but `ptp4l` has two implementations,
 ```bash
 #    This systemd service allows "other" eth1 events to be prioritized over
 #     other TxR IRQs. Needed for handling the multiple SDP EXTTS events
-sudo wget -O /etc/systemd/system/ptp4l-auto-gm.service \
+sudo wget -O /etc/systemd/system/igc-ptp-irq.service \
   https://raw.githubusercontent.com/bradyte/AutomotiveTimeHAT/refs/heads/main/src/igc/igc-ptp-irq.service
 ```
 
